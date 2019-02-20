@@ -14,8 +14,13 @@ username='Zabbix'
 # Get the Slack channel or user ($1) and Zabbix subject ($2 - hopefully either PROBLEM or RECOVERY/OK)
 to="$1"
 subject="$2"
-severity="$6"
 
+# Extract the severity from message ($3)
+severity_regex='Severity: (Disaster|High|Average|Warning|Information)'
+
+if [[ $3 =~ $severity_regex ]]; then
+  severity=${BASH_REMATCH[1]}
+fi
 
 # Change message emoji depending on the subject - smile (RECOVERY/OK), frowning (PROBLEM), or ghost (for everything else)
 recoversub='^RECOVER(Y|ED)?'
