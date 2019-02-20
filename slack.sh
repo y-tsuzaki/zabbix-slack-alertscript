@@ -32,7 +32,10 @@ fi
 message="${subject}: $3"
 
 # in case a 4th parameter is set, we will use it for the url
-url=${4-$url}
+if [[ $4 != "" ]] ; then
+  url=$4
+fi
+
 # in case a 5th parameter is set, we will us it for the proxy settings
 proxy=${5-""}
 if [[ "$proxy" != "" ]] ; then
