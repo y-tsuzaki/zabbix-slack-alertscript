@@ -21,9 +21,9 @@ severity="$6"
 recoversub='^RECOVER(Y|ED)?'
 if [[ "$subject" =~ ${recoversub} ]]; then
        emoji=':smile:'
-elif [ "$subject" =~ '^OK' ]; then
+elif [[ "$subject" =~ '^OK' ]]; then
        emoji=':smile:'
-elif [ "$subject" =~ '^PROBLEM' ]; then
+elif [[ "$subject" =~ '^PROBLEM' ]]; then
        emoji=':frowning:'
 else
        emoji=':ghost:'
@@ -33,7 +33,7 @@ fi
 if [[ "$subject" =~ ${recoversub}  || "$subject" == 'OK'  ]]; then
         color='good'
 else
-        if [[ "$severity" == 'Disaster' ]]; then
+        if [ "$severity" == 'Disaster' ]; then
                 color='danger'
         elif [ "$severity" == 'High' ]; then
                 color='danger'
